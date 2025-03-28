@@ -172,7 +172,7 @@ def user_stats(df):
     start_time = time.time()
 
     # TO DO: Display counts of user types
-    #Filters out na values and switches to Other 
+    #Filters out NA values and switches to Other 
     df['User Type'] = df['User Type'].fillna('Other')
     
     print("User Type Count")
@@ -182,7 +182,7 @@ def user_stats(df):
         print(unique_user +": "+ str(int(user_count[unique_user])))
     
     # TO DO: Display counts of gender
-    #Switched na values into Undisclosed because not everyone might want to disclose their gender
+    #Switched NA values into Undisclosed because not everyone might want to disclose their gender
     print("\nGender Count")
     
     try:
@@ -192,7 +192,7 @@ def user_stats(df):
         for gender in df['Gender'].unique():
             print(str(gender) +": "+ str(int(gender_count[gender]))) 
      
-    #one of the data files had no Gender data
+    #one of the data files had no Gender data column
     except KeyError:
         print("----No Gender Data Available----")
         
@@ -204,7 +204,7 @@ def user_stats(df):
         print("User Base Common Birth Year: " + str(int(df['Birth Year'].mode())))
         print("User Base Newest Birth Year: " + str(int(df['Birth Year'].max())))
         
-    #One of the data files had not birthyear data    
+    #One of the data files had no birthyear data column    
     except KeyError:  
         print("----No Birth Year Data Available----")
         
@@ -218,7 +218,7 @@ def data_show(df):
     """
     #intialized variables for tracking    
     count = 0
-    #Drop columns for filter to make sure we see raw data, display is done at end so those columns are no longder needed
+    #Dropped columns used for filtering, to make sure we see raw data, display is done at end so those columns are no longder needed
     df = df.drop(['hour', 'month','day_of_week','combistation'], axis = 1) 
     data_preview = input("Output first 5 rows of selected data?\n").lower()
     
@@ -239,7 +239,7 @@ def main():
         data_show(df)
        
         restart = input('\nEnter yes if you would like to restart?\n')
-        if restart.lower() not in ['yes' , 'y' , 'ye']:  #Did 2 variations because they were the sot common mistakes I made
+        if restart.lower() not in ['yes' , 'y' , 'ye']:  #Did 2 variations because they were the most common mistakes I made
             break
 
 if __name__ == "__main__":
